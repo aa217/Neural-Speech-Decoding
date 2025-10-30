@@ -1,0 +1,63 @@
+27.9390 	DEBUG 	Fullscreen settings ignored as running in pilot mode.
+27.9408 	INFO 	Loaded monitor calibration from ['2025_02_24 21:30']
+28.6851 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x00000210D6441E40>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x00000210D6441DE0>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=False, gamma=None, gammaErrorPolicy='raise', infoMsg=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x00000210D64F7670>, multiSample=False, name='window1', numSamples=2, pos=[560.0, 240.0], screen=0, size=array([800, 600]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+28.6852 	EXP 	window1: backgroundImage = ''
+28.6852 	EXP 	window1: backgroundFit = 'none'
+28.7051 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7061 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7070 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7081 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7092 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7098 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7106 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7118 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7121 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7126 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7134 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7143 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7152 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7161 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7168 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7177 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7186 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7191 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7198 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7210 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7215 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7219 	DEBUG 	Uploading Texture Font fontname to graphics card
+28.7269 	DEBUG 	Upload of Texture Font fontname complete
+28.7359 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7372 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7382 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+28.7386 	DEBUG 	Uploading Texture Font fontname to graphics card
+28.7405 	DEBUG 	Upload of Texture Font fontname complete
+28.7429 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+28.7429 	EXP 	window1: recordFrameIntervals = False
+28.9152 	EXP 	window1: recordFrameIntervals = True
+29.0983 	EXP 	Screen (0) actual frame rate measured at 60.13Hz
+29.0984 	EXP 	window1: recordFrameIntervals = False
+29.1055 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1062 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1075 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1093 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1108 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1125 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1134 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1148 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1165 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1181 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+29.1185 	DEBUG 	Uploading Texture Font fontname to graphics card
+29.1192 	DEBUG 	Upload of Texture Font fontname complete
+29.1752 	WARNING 	launchHubServer: If using the iohub mouse or eyetracker devices, fullScr should be True.
+31.8503 	INFO 	keyboard.Keyboard is using iohub backend.
+31.8875 	EXP 	DataCollectionExperiment: status = STARTED
+31.9013 	EXP 	Sound auditory_stimulus set volume 1.000
+31.9549 	EXP 	Created word_of_interest = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='word_of_interest', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+32.0996 	EXP 	Created cool_off_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='cool_off_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+0.0906 	DEBUG 	Read csv file with pandas: words.csv
+0.0916 	DEBUG 	Clearing unnamed columns from words.csv
+0.0919 	EXP 	Imported words.csv as conditions, 4 conditions, 2 params
+0.0923 	EXP 	New trial (rep=0, index=0): <Trial 0 (0 in rep 0) data={'words': 'water', 'audio': 'a', 'thisN': 0, 'thisTrialN': 0, 'thisRepN': 0}>
+0.1513 	DEBUG 	Saving data for DataCollectionExperiment ExperimentHandler
+0.1539 	INFO 	saved data to C:\Users\Abdallah\Desktop\EEG DEVICE\github_neuropawn\Neural-Speech-Decoding\data/189646_DataCollectionExperiment_2025-10-25_21h08.46.975.psydat
+0.1556 	INFO 	saved data to 'C:\\Users\\Abdallah\\Desktop\\EEG DEVICE\\github_neuropawn\\Neural-Speech-Decoding\\data/189646_DataCollectionExperiment_2025-10-25_21h08.46.975.csv'

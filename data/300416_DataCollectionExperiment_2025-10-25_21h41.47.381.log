@@ -1,0 +1,170 @@
+6.8832 	DEBUG 	Fullscreen settings ignored as running in pilot mode.
+6.8851 	INFO 	Loaded monitor calibration from ['2025_02_24 21:30']
+7.0956 	EXP 	Created window1 = Window(allowGUI=False, allowStencil=False, autoLog=True, backendConf=UNKNOWN, backgroundFit=<method-wrapper '__getattribute__' of attributeSetter object at 0x00000164A23B1E70>, backgroundImage=<method-wrapper '__getattribute__' of attributeSetter object at 0x00000164A23B1E10>, bitsMode=UNKNOWN, blendMode='avg', bpc=(8, 8, 8), color=array([0, 0, 0]), colorSpace='rgb', depthBits=8, fullscr=False, gamma=None, gammaErrorPolicy='raise', infoMsg=UNKNOWN, lms=UNKNOWN, monitor=<psychopy.monitors.calibTools.Monitor object at 0x00000164A24676A0>, multiSample=False, name='window1', numSamples=2, pos=[560.0, 240.0], screen=0, size=array([800, 600]), stencilBits=0, stereo=False, title='PsychoPy', units='height', useFBO=True, useRetina=False, viewOri=0.0, viewPos=None, viewScale=None, waitBlanking=True, winType='pyglet')
+7.0957 	EXP 	window1: backgroundImage = ''
+7.0957 	EXP 	window1: backgroundFit = 'none'
+7.1043 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1053 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1064 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1076 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1087 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1093 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1105 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1121 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1128 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1134 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1147 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1158 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1169 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1180 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1189 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1201 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1213 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1219 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1226 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1241 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1247 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1252 	DEBUG 	Uploading Texture Font fontname to graphics card
+7.1282 	DEBUG 	Upload of Texture Font fontname complete
+7.1391 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1408 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1424 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.1428 	DEBUG 	Uploading Texture Font fontname to graphics card
+7.1449 	DEBUG 	Upload of Texture Font fontname complete
+7.1482 	EXP 	window1: Attempting to measure frame rate of screen (0) ...
+7.1482 	EXP 	window1: recordFrameIntervals = False
+7.3136 	EXP 	window1: recordFrameIntervals = True
+7.4975 	EXP 	Screen (0) actual frame rate measured at 60.08Hz
+7.4975 	EXP 	window1: recordFrameIntervals = False
+7.5040 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5046 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5055 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5068 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5079 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5092 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5099 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5112 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5129 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5142 	DEBUG 	TextBox2 loaded 1 chars with 0 blanks and 1 valid
+7.5146 	DEBUG 	Uploading Texture Font fontname to graphics card
+7.5153 	DEBUG 	Upload of Texture Font fontname complete
+7.5263 	WARNING 	launchHubServer: If using the iohub mouse or eyetracker devices, fullScr should be True.
+9.2246 	INFO 	keyboard.Keyboard is using iohub backend.
+9.2640 	EXP 	DataCollectionExperiment: status = STARTED
+9.3094 	EXP 	Sound auditory_stimulus set volume 1.000
+9.3287 	EXP 	Created word_of_interest = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-1.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='word_of_interest', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+9.3672 	EXP 	Created cool_off_text = TextStim(__class__=<class 'psychopy.visual.text.TextStim'>, alignHoriz=method-wrapper(...), alignText='center', alignVert=method-wrapper(...), anchorHoriz='center', anchorVert='center', antialias=True, autoDraw=False, autoLog=True, bold=False, color=array([1., 1., 1.]), colorSpace='rgb', contrast=1.0, depth=-2.0, draggable=False, flipHoriz=False, flipVert=False, font='Arial', fontFiles=[], height=0.05, italic=False, languageStyle='LTR', name='cool_off_text', opacity=1, ori=0.0, pos=array([0., 0.]), rgb=UNKNOWN, text='', units='height', win=Window(...), wrapWidth=1)
+0.0280 	DEBUG 	Read csv file with pandas: words.csv
+0.0291 	DEBUG 	Clearing unnamed columns from words.csv
+0.0295 	EXP 	Imported words.csv as conditions, 4 conditions, 2 params
+0.0299 	EXP 	New trial (rep=0, index=0): <Trial 0 (0 in rep 0) data={'words': 'food', 'audio': 'a', 'thisN': 0, 'thisTrialN': 0, 'thisRepN': 0}>
+0.0392 	EXP 	Sound auditory_stimulus reached end of file
+0.0505 	EXP 	Sound auditory_stimulus started
+0.0463 	EXP 	word_of_interest: height = 0.05
+0.0463 	EXP 	word_of_interest: height = 0.05
+0.0463 	EXP 	word_of_interest: height = 0.05
+0.0463 	EXP 	word_of_interest: text = 'food'
+0.5140 	EXP 	word_of_interest: autoDraw = True
+0.5532 	EXP 	Sound auditory_stimulus reached end of file
+4.5149 	EXP 	word_of_interest: autoDraw = False
+4.5149 	EXP 	cool_off_text: autoDraw = True
+5.0014 	EXP 	New trial (rep=1, index=1): <Trial 1 (1 in rep 1) data={'words': 'food', 'audio': 'a', 'thisN': 1, 'thisTrialN': 1, 'thisRepN': 1}>
+5.0023 	EXP 	Sound auditory_stimulus reached end of file
+5.0149 	EXP 	Sound auditory_stimulus started
+5.0150 	EXP 	word_of_interest: autoDraw = False
+5.0150 	EXP 	cool_off_text: autoDraw = False
+5.0150 	EXP 	word_of_interest: text = 'food'
+5.5138 	EXP 	Sound auditory_stimulus stopped
+5.5306 	EXP 	word_of_interest: autoDraw = True
+9.5157 	EXP 	cool_off_text: autoDraw = True
+9.5322 	EXP 	word_of_interest: autoDraw = False
+10.0014 	EXP 	New trial (rep=0, index=2): <Trial 2 (2 in rep 0) data={'words': 'water', 'audio': 'a', 'thisN': 2, 'thisTrialN': 2, 'thisRepN': 0}>
+10.0078 	EXP 	Sound auditory_stimulus reached end of file
+10.0152 	EXP 	Sound auditory_stimulus started
+10.0151 	EXP 	word_of_interest: autoDraw = False
+10.0151 	EXP 	cool_off_text: autoDraw = False
+10.0151 	EXP 	word_of_interest: height = 0.05
+10.0151 	EXP 	word_of_interest: height = 0.05
+10.0151 	EXP 	word_of_interest: height = 0.05
+10.0151 	EXP 	word_of_interest: text = 'water'
+10.5132 	EXP 	Sound auditory_stimulus stopped
+10.5312 	EXP 	word_of_interest: autoDraw = True
+14.4995 	EXP 	cool_off_text: autoDraw = True
+14.5328 	EXP 	word_of_interest: autoDraw = False
+14.9864 	EXP 	New trial (rep=0, index=3): <Trial 3 (3 in rep 0) data={'words': 'yes', 'audio': 'a', 'thisN': 3, 'thisTrialN': 3, 'thisRepN': 0}>
+14.9995 	EXP 	cool_off_text: autoDraw = False
+14.9995 	EXP 	word_of_interest: autoDraw = False
+14.9995 	EXP 	cool_off_text: autoDraw = False
+14.9995 	EXP 	word_of_interest: height = 0.05
+14.9995 	EXP 	word_of_interest: height = 0.05
+14.9995 	EXP 	word_of_interest: height = 0.05
+14.9995 	EXP 	word_of_interest: text = 'yes'
+15.0018 	EXP 	Sound auditory_stimulus reached end of file
+15.0161 	EXP 	Sound auditory_stimulus started
+15.4994 	EXP 	word_of_interest: autoDraw = True
+15.5132 	EXP 	Sound auditory_stimulus stopped
+19.5000 	EXP 	word_of_interest: autoDraw = False
+19.5000 	EXP 	cool_off_text: autoDraw = True
+19.9867 	EXP 	New trial (rep=1, index=4): <Trial 4 (4 in rep 1) data={'words': 'water', 'audio': 'a', 'thisN': 4, 'thisTrialN': 4, 'thisRepN': 1}>
+19.9896 	EXP 	Sound auditory_stimulus reached end of file
+20.0002 	EXP 	Sound auditory_stimulus started
+20.0002 	EXP 	cool_off_text: autoDraw = False
+20.0002 	EXP 	word_of_interest: autoDraw = False
+20.0002 	EXP 	cool_off_text: autoDraw = False
+20.0002 	EXP 	word_of_interest: height = 0.05
+20.0002 	EXP 	word_of_interest: height = 0.05
+20.0002 	EXP 	word_of_interest: height = 0.05
+20.0002 	EXP 	word_of_interest: text = 'water'
+20.5031 	EXP 	Sound auditory_stimulus stopped
+20.5160 	EXP 	word_of_interest: autoDraw = True
+24.5007 	EXP 	cool_off_text: autoDraw = True
+24.5177 	EXP 	word_of_interest: autoDraw = False
+24.9880 	EXP 	New trial (rep=2, index=5): <Trial 5 (5 in rep 2) data={'words': 'food', 'audio': 'a', 'thisN': 5, 'thisTrialN': 5, 'thisRepN': 2}>
+24.9913 	EXP 	Sound auditory_stimulus reached end of file
+25.0009 	EXP 	Sound auditory_stimulus started
+25.0009 	EXP 	cool_off_text: autoDraw = False
+25.0009 	EXP 	word_of_interest: autoDraw = False
+25.0009 	EXP 	cool_off_text: autoDraw = False
+25.0009 	EXP 	word_of_interest: height = 0.05
+25.0009 	EXP 	word_of_interest: height = 0.05
+25.0009 	EXP 	word_of_interest: height = 0.05
+25.0009 	EXP 	word_of_interest: text = 'food'
+25.5032 	EXP 	Sound auditory_stimulus stopped
+25.5167 	EXP 	word_of_interest: autoDraw = True
+29.5014 	EXP 	cool_off_text: autoDraw = True
+29.5180 	EXP 	word_of_interest: autoDraw = False
+29.9878 	EXP 	New trial (rep=2, index=6): <Trial 6 (6 in rep 2) data={'words': 'water', 'audio': 'a', 'thisN': 6, 'thisTrialN': 6, 'thisRepN': 2}>
+29.9916 	EXP 	Sound auditory_stimulus reached end of file
+30.0015 	EXP 	Sound auditory_stimulus started
+30.0017 	EXP 	cool_off_text: autoDraw = False
+30.0017 	EXP 	word_of_interest: autoDraw = False
+30.0017 	EXP 	cool_off_text: autoDraw = False
+30.0017 	EXP 	word_of_interest: height = 0.05
+30.0017 	EXP 	word_of_interest: height = 0.05
+30.0017 	EXP 	word_of_interest: height = 0.05
+30.0017 	EXP 	word_of_interest: text = 'water'
+30.5032 	EXP 	Sound auditory_stimulus stopped
+30.5173 	EXP 	word_of_interest: autoDraw = True
+34.5030 	EXP 	cool_off_text: autoDraw = True
+34.5194 	EXP 	word_of_interest: autoDraw = False
+34.9892 	EXP 	New trial (rep=0, index=7): <Trial 7 (7 in rep 0) data={'words': 'no', 'audio': 'a', 'thisN': 7, 'thisTrialN': 7, 'thisRepN': 0}>
+34.9934 	EXP 	Sound auditory_stimulus reached end of file
+35.0026 	EXP 	Sound auditory_stimulus started
+35.0027 	EXP 	cool_off_text: autoDraw = False
+35.0027 	EXP 	word_of_interest: autoDraw = False
+35.0027 	EXP 	cool_off_text: autoDraw = False
+35.0027 	EXP 	word_of_interest: height = 0.05
+35.0027 	EXP 	word_of_interest: height = 0.05
+35.0027 	EXP 	word_of_interest: height = 0.05
+35.0027 	EXP 	word_of_interest: text = 'no'
+35.5032 	EXP 	Sound auditory_stimulus stopped
+35.5179 	EXP 	word_of_interest: autoDraw = True
+36.3424 	DATA 	Mouse: Left button down, pos=(546,282)
+36.4064 	DATA 	Mouse:  Left button up, pos=(546,282)
+37.1910 	DATA 	Keypress: escape
+37.2049 	EXP 	DataCollectionExperiment: status = STOPPED
+37.2192 	EXP 	word_of_interest: autoDraw = False
+37.2217 	EXP 	DataCollectionExperiment: status = STOPPED
+37.2275 	INFO 	saved data to 'C:\\Users\\Abdallah\\Desktop\\EEG DEVICE\\github_neuropawn\\Neural-Speech-Decoding\\data/300416_DataCollectionExperiment_2025-10-25_21h41.47.381.csv'
+37.2291 	INFO 	saved data to C:\Users\Abdallah\Desktop\EEG DEVICE\github_neuropawn\Neural-Speech-Decoding\data/300416_DataCollectionExperiment_2025-10-25_21h41.47.381.psydat
+37.4739 	DEBUG 	Saving data for DataCollectionExperiment ExperimentHandler
