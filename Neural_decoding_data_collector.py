@@ -10,6 +10,11 @@ If you publish work using this script the most relevant publication is:
         https://doi.org/10.3758/s13428-018-01193-y
 
 """
+# Change this before you run the script
+BOARD_CONFIG_COM_PORT = "COM16"
+DATA_FOLDER_NAME = "DATA_PERSON_NAME"
+TEST_CASE_NUMBER = "1"
+
 
 # --- Import packages ---
 from psychopy import locale_setup
@@ -78,7 +83,7 @@ class RecordingProcess(Process):
         from brainflow.data_filter import DataFilter, DetrendOperations, FilterTypes
         import numpy as np
 
-        self.kb = KnightBoard('COM4', 8)
+        self.kb = KnightBoard(BOARD_CONFIG_COM_PORT, 8)
         self.kb.start_stream()
         self.board_shim = self.kb.board_shim
         self.sampling_rate = self.kb.sr
@@ -94,7 +99,7 @@ class RecordingProcess(Process):
                 if not prev_recording_flag:
                     # Use the shared word for the filename
                     current_word = self.shared_word.value
-                    self.record_save_path = f"./data/{current_word}_TEST.csv"
+                    self.record_save_path = f"./{DATA_FOLDER_NAME}/{current_word}_{TEST_CASE_NUMBER}.csv"
                     
                     data = self.board_shim.get_current_board_data(625)
                     if data.shape[1] > 0:
@@ -362,7 +367,7 @@ def pauseExperiment(thisExp, win=None, timers=[], currentRoutine=None):
         timer.addTime(-pauseTimer.getTime())
 
 
-def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
+def run(expInfo, thisExp, win, globalClock=None, thisSession=None, test_case_number=None):
     """
     Run the experiment flow.
     
@@ -379,6 +384,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         Clock to get global time from - supply None to make a new one.
     thisSession : psychopy.session.Session or None
         Handle of the Session object this experiment is being run from, if any.
+    test_case_number: Current test case number
     """
     # mark experiment as started
     thisExp.status = STARTED
@@ -424,14 +430,14 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         pos=(0, 0), draggable=False, height=0.3, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-1.0);
+        depth=-1.0)
     cool_off_text = visual.TextStim(win=win, name='cool_off_text',
         text='COOL OFF',
         font='Arial',
         pos=(0, 0), draggable=False, height=0.2, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
-        depth=-2.0);
+        depth=-2.0)
     
     # create some handy timers
     
