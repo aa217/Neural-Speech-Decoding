@@ -37,6 +37,7 @@ from psychopy.hardware import keyboard
 from multiprocessing import Process, Value, Event, Manager
 
 deviceManager = hardware.DeviceManager()
+
 # ensure that relative paths start from the same directory as this script
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 # store info about the experiment session
@@ -93,9 +94,9 @@ class RecordingProcess(Process):
                 if not prev_recording_flag:
                     # Use the shared word for the filename
                     current_word = self.shared_word.value
-                    self.record_save_path = f"./data/{current_word}_10.csv"
+                    self.record_save_path = f"./data/{current_word}_TEST.csv"
                     
-                    data = self.board_shim.get_current_board_data(600)
+                    data = self.board_shim.get_current_board_data(625)
                     if data.shape[1] > 0:
                         for count, channel in enumerate(self.eeg_channels):
                             # Process each channel
