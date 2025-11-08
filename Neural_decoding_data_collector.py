@@ -11,10 +11,11 @@ If you publish work using this script the most relevant publication is:
 
 """
 # Change this before you run the script
-BOARD_CONFIG_COM_PORT = "COM16"
-DATA_FOLDER_NAME = "DATA_PERSON_NAME"
-TEST_CASE_NUMBER = "1"
+BOARD_CONFIG_COM_PORT = "COM17"
+DATA_FOLDER_NAME = "data_ANDY"
+NUMBER_OF_REPS = "2"
 
+import uuid
 
 # --- Import packages ---
 from psychopy import locale_setup
@@ -36,6 +37,7 @@ from numpy.random import random, randint, normal, shuffle, choice as randchoice
 import os  # handy system and path functions
 import sys  # to get file system encoding
 
+
 import psychopy.iohub as io
 from psychopy.hardware import keyboard
 
@@ -56,6 +58,7 @@ expInfo = {
     'participant': f"{randint(0, 999999):06.0f}",
     'session': '001',
     'date|hid': data.getDateStr(),
+
     'expName|hid': expName,
     'psychopyVersion|hid': psychopyVersion,
 }
@@ -89,6 +92,7 @@ class RecordingProcess(Process):
         self.sampling_rate = self.kb.sr
         self.eeg_channels = self.kb.eeg_channels
         self.index = 0
+        
 
         prev_recording_flag = False  # Helps us detect the rising edge.
 
@@ -99,7 +103,8 @@ class RecordingProcess(Process):
                 if not prev_recording_flag:
                     # Use the shared word for the filename
                     current_word = self.shared_word.value
-                    self.record_save_path = f"./{DATA_FOLDER_NAME}/{current_word}_{TEST_CASE_NUMBER}.csv"
+                    random_uuid = uuid.uuid4()
+                    self.record_save_path = f"./{DATA_FOLDER_NAME}/{current_word}_{random_uuid}.csv"
                     
                     data = self.board_shim.get_current_board_data(625)
                     if data.shape[1] > 0:
@@ -367,7 +372,7 @@ def pauseExperiment(thisExp, win=None, timers=[], currentRoutine=None):
         timer.addTime(-pauseTimer.getTime())
 
 
-def run(expInfo, thisExp, win, globalClock=None, thisSession=None, test_case_number=None):
+def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     """
     Run the experiment flow.
     
@@ -470,7 +475,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None, test_case_num
     # set up handler to look after randomisation of conditions etc
     trials = data.TrialHandler2(
         name='trials',
-        nReps=1.0, 
+        nReps=NUMBER_OF_REPS, 
         method='fullRandom', 
         extraInfo=expInfo, 
         originPath=-1, 
@@ -791,6 +796,6 @@ if __name__ == '__main__':
         expInfo=expInfo, 
         thisExp=thisExp, 
         win=win,
-        globalClock='float'
+        globalClock='float',
     )
     quit(thisExp=thisExp, win=win)
