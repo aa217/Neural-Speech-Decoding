@@ -33,7 +33,6 @@ markdown-it-py==4.0.0
 matplotlib==3.10.7
 mdurl==0.1.2
 meshpy==2025.1.1
-mindsai-filter-python @ file:///C:/Users/abdal/OneDrive/Desktop/old%20desktop/EEG%20DEVICE/github_neuropawn/Neural-Speech-Decoding/MindsAI
 moviepy==2.2.1
 msgpack==1.1.2
 msgpack-numpy==0.4.8
