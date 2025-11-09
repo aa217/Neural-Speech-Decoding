@@ -11,10 +11,9 @@ If you publish work using this script the most relevant publication is:
 
 """
 # Change this before you run the script
-BOARD_CONFIG_COM_PORT = "COM17"
-DATA_FOLDER_NAME = "data_ANDY"
-NUMBER_OF_REPS = "2"
-
+BOARD_CONFIG_COM_PORT = "COM8"
+DATA_FOLDER_NAME = "new_data"
+NUMBER_OF_REPS = "5"
 import uuid
 
 # --- Import packages ---
