@@ -13,7 +13,7 @@ If you publish work using this script the most relevant publication is:
 # Change this before you run the script
 BOARD_CONFIG_COM_PORT = "COM8"
 DATA_FOLDER_NAME = "new_data"
-NUMBER_OF_REPS = "25"
+NUMBER_OF_REPS = "10"
 import uuid
 
 # --- Import packages ---
@@ -103,7 +103,7 @@ class RecordingProcess(Process):
                     # Use the shared word for the filename
                     current_word = self.shared_word.value
                     random_uuid = uuid.uuid4()
-                    self.record_save_path = f"./{DATA_FOLDER_NAME}/{current_word}_{random_uuid}.csv"
+                    self.record_save_path = f"./{DATA_FOLDER_NAME}/backgroundnoise_{random_uuid}.csv"
                     
                     data = self.board_shim.get_current_board_data(625)
                     if data.shape[1] > 0:
