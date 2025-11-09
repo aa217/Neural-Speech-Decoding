@@ -13,7 +13,7 @@ If you publish work using this script the most relevant publication is:
 # Change this before you run the script
 BOARD_CONFIG_COM_PORT = "COM8"
 DATA_FOLDER_NAME = "new_data"
-NUMBER_OF_REPS = "100"
+NUMBER_OF_REPS = "25"
 import uuid
 
 # --- Import packages ---
