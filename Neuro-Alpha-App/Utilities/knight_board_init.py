@@ -15,7 +15,7 @@ class KnightBoard:
         self.board_id = self.board_shim.get_board_id()
         self.eeg_channels = self.board_shim.get_exg_channels(self.board_id)
         self.sr = self.board_shim.get_sampling_rate(self.board_id)
-        self.num_points = 200  # Can be adjusted based on needs
+        self.num_points = 200 
 
     def start_stream(self, buffer_size: int = 450000):
         """Start the data stream from the board."""
