@@ -1,7 +1,7 @@
 # pre_processor.py
 import numpy as np
 
-from MindsAI.mindsai_filter_python.core import mindsai_python_filter as mai
+from .MindsAI.mindsai_filter_python.core import mindsai_python_filter as mai
 
 class PreProcessor:
     """

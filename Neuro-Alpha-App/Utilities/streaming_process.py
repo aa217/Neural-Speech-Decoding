@@ -2,7 +2,7 @@
 import time
 import numpy as np
 from multiprocessing import Process, Event, Value, Queue
-from neurokit_connector import NeuroPawnConnector
+from .neurokit_connector import NeuroPawnConnector
 
 
 class StreamingProcess(Process):

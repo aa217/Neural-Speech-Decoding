@@ -4,8 +4,8 @@ from pathlib import Path
 import time
 import numpy as np
 
-from streaming_process import StreamingProcess
-from lstm_eeg_model import SimplePredictor
+from .streaming_process import StreamingProcess
+from .lstm_eeg_model import SimplePredictor
 
 MODEL_PATH = Path(__file__).resolve().parent / "LSTM_Model" / "lstm_classifier_Water_Food_Bg_Noise.pth"
 
@@ -15,7 +15,7 @@ class TesterStream:
 
     def __init__(
         self,
-        serial_port: str = "/dev/cu.usbserial-FTB6SPL3",
+        serial_port: str = "COM5",
         num_channels: int = 8,
         window_seconds: float = 5.0,
         model_path: Path | str = MODEL_PATH,

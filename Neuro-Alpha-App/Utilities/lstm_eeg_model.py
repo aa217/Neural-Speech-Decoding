@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from preprocessor import PreProcessor 
+from .preprocessor import PreProcessor
 
 CLASS_NAMES = ["Food", "Water", "BG-Noise"] 
 
