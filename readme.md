@@ -1,6 +1,6 @@
 # NeuroAlpha — Imagined Speech Decoder
 
-> v2 branch — contains the live demo showcased at HackMIT / demo day. Device mode is wired through `Utilities/`, while the Streamlit frontend lives in `Neuro-Alpha-App/Frontend`.
+> v2 branch — contains the live demo showcased at demo day. Device mode is wired through `Utilities/`, while the Streamlit frontend lives in `Neuro-Alpha-App/Frontend`.
 
 ## Getting Started
 
