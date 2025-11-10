@@ -25,16 +25,21 @@ CHANNELS = 8
 SAMPLE_RATE = 125  # Hz (mock data only for now)
 WINDOW_SECONDS = 5
 SAMPLES = int(SAMPLE_RATE * WINDOW_SECONDS)
-WARMUP_SECONDS = 1.5
 
 
 # ---------------------------------------------------------------------------
 # Mock helpers
 # ---------------------------------------------------------------------------
-def generate_mock_probs() -> Dict[str, float]:
-    raw = np.random.rand(len(CLASSES))
-    probs = raw / raw.sum()
-    return {label: float(val) for label, val in zip(CLASSES, probs)}
+def generate_mock_probs(focus_label: str) -> Dict[str, float]:
+    focus_prob = np.random.uniform(0.60, 0.70)
+    remaining = max(0.0, 1.0 - focus_prob)
+    other_labels = [c for c in CLASSES if c != focus_label]
+    weights = np.random.rand(len(other_labels))
+    weights = weights / weights.sum() if weights.sum() else np.full(len(other_labels), 1/len(other_labels))
+    probs = {focus_label: focus_prob}
+    for label, weight in zip(other_labels, weights):
+        probs[label] = remaining * float(weight)
+    return probs
 
 
 def generate_mock_eeg() -> np.ndarray:
@@ -60,7 +65,7 @@ class UIState:
     transcript: str = "Press Start to begin."
     last_update: str = "Never"
     status_msg: str = ""
-    warmup_start: Optional[float] = None
+    focus_label: str = CLASSES[0]
 
 
 if "ui_state" not in st.session_state:
@@ -97,32 +102,23 @@ st.sidebar.header("Input Source")
 STATE.test_mode = st.sidebar.checkbox("Test mode (fake data)", value=STATE.test_mode)
 if not STATE.test_mode:
     st.sidebar.info("Device mode will be re-enabled soon. Keep Test mode on for now.", icon="ℹ️")
+current_index = CLASSES.index(STATE.focus_label) if STATE.focus_label in CLASSES else 0
+STATE.focus_label = st.sidebar.selectbox("Top prediction word", CLASSES, index=current_index)
 
 
 def run_mock_cycle() -> None:
-    STATE.word_probs = generate_mock_probs()
+    STATE.word_probs = generate_mock_probs(STATE.focus_label)
     STATE.eeg_data = generate_mock_eeg()
     top_label = max(STATE.word_probs, key=STATE.word_probs.get)
     STATE.transcript = f"Predicted: {top_label}"
     STATE.last_update = time.strftime("%H:%M:%S")
-    STATE.warmup_start = None
-
-
-def is_warming_up() -> bool:
-    if not STATE.running or not STATE.test_mode:
-        return False
-    if STATE.warmup_start is None:
-        return False
-    return (time.time() - STATE.warmup_start) < WARMUP_SECONDS
+    STATE.status_msg = "Recording complete — snapshot ready."
 
 
 # ---------------------------------------------------------------------------
 # Header + controls
 # ---------------------------------------------------------------------------
-if STATE.running and is_warming_up():
-    status_badge = "Warming up"
-else:
-    status_badge = "Running" if STATE.running else ("Ready" if STATE.eeg_data is not None else "Idle")
+status_badge = "Recording…" if STATE.running else ("Ready" if STATE.eeg_data is not None else "Idle")
 mode_text = "Simulated EEG stream" if STATE.test_mode else "Device-backed stream (coming soon)"
 st.markdown(
     f"""
@@ -145,18 +141,19 @@ with left_btn:
         if STATE.test_mode:
             STATE.running = True
             STATE.status_msg = ""
-            STATE.warmup_start = time.time()
             STATE.word_probs = {c: 0.0 for c in CLASSES}
             STATE.eeg_data = None
-            STATE.transcript = "Model warming up..."
-            STATE.last_update = "Calibrating..."
+            STATE.transcript = "Recording EEG… please hold still."
+            STATE.last_update = "Recording…"
         else:
             STATE.status_msg = "Device mode not available yet. Please enable Test mode."
 with right_btn:
     if st.button("Stop", use_container_width=True, disabled=not STATE.running):
         STATE.running = False
-        STATE.status_msg = "Stopped."
-        STATE.warmup_start = None
+        if STATE.test_mode:
+            run_mock_cycle()
+        else:
+            STATE.status_msg = "Stopped."
 with meta:
     st.markdown(
         f"<div class='card' style='margin-bottom:0;'>"
@@ -174,8 +171,8 @@ if STATE.status_msg:
 # ---------------------------------------------------------------------------
 prob_cols = st.columns(3)
 for col, label in zip(prob_cols, CLASSES):
-    if is_warming_up():
-        display = "<div class='bigtext'>…</div>"
+    if STATE.running:
+        display = "<div class='bigtext'>Recording…</div>"
     else:
         value = STATE.word_probs.get(label, 0.0) * 100
         display = f"<div class='bigtext'>{value:05.2f}%</div>"
@@ -195,8 +192,8 @@ viz_left, viz_right = st.columns([2, 1])
 with viz_left:
     st.markdown("<div class='card'>", unsafe_allow_html=True)
     st.subheader("8-channel EEG", divider=False)
-    if is_warming_up():
-        st.info("Calibrating… generating a fresh window.")
+    if STATE.running:
+        st.info("Recording EEG… please hold still.")
     elif STATE.eeg_data is not None:
         df = pd.DataFrame(STATE.eeg_data, columns=[f"Ch {i+1}" for i in range(CHANNELS)])
         st.line_chart(df, height=280, use_container_width=True)
@@ -212,21 +209,3 @@ with viz_right:
 
 
 st.caption(f"Mock setup • channels: {CHANNELS} • sample rate: {SAMPLE_RATE} Hz • window: {WINDOW_SECONDS}s")
-
-
-# ---------------------------------------------------------------------------
-# Auto-refresh loop (test mode only)
-# ---------------------------------------------------------------------------
-if STATE.running:
-    if STATE.test_mode:
-        delay = 0.4 if is_warming_up() else 0.7
-        if not is_warming_up():
-            run_mock_cycle()
-        time.sleep(delay)
-        rerun = getattr(st, "rerun", None)
-        if callable(rerun):
-            rerun()
-    else:
-        # Device mode placeholder
-        STATE.running = False
-        STATE.status_msg = "Device mode support will return soon."
