@@ -1,21 +1,30 @@
 from dataclasses import dataclass
 from multiprocessing import Queue, freeze_support
+from pathlib import Path
+import time
 from typing import Optional
 
 import numpy as np
 
-from streaming_process import StreamingProcess
-from lstm_eeg_model import SimplePredictor
+try:  # allow both package and standalone usage
+    from .streaming_process import StreamingProcess  # type: ignore
+    from .lstm_eeg_model import SimplePredictor  # type: ignore
+except ImportError:
+    from streaming_process import StreamingProcess
+    from lstm_eeg_model import SimplePredictor
 
 
 DEFAULT_SERIAL = "/dev/cu.usbserial-FTB6SPL3"
-DEFAULT_MODEL = "Neuro-Alpha-App/Utilities/LSTM_Model/lstm_classifier_Water_Food_Bg_Noise.pth"
+DEFAULT_MODEL = str(
+    Path(__file__).resolve().parent / "LSTM_Model" / "lstm_classifier_Water_Food_Bg_Noise.pth"
+)
 
 
 @dataclass
 class TrialResult:
     trials: int
     avg_probs: Optional[np.ndarray]
+    avg_chunk: Optional[np.ndarray] = None
 
 
 def run_trials(
@@ -43,6 +52,7 @@ def run_trials(
     predictor = None
     collected = 0
     sum_probs = np.zeros(3, dtype=np.float32)
+    sum_chunk = None
 
     try:
         while collected < trials:
@@ -56,7 +66,7 @@ def run_trials(
                     print("Waiting for chunk...", flush=True)
                 continue
 
-            chunk = item["data"]
+            chunk = np.asarray(item["data"])
             sr = item["sr"]
             channels = item.get("channels")
 
@@ -77,6 +87,7 @@ def run_trials(
 
             probs, label = predictor.predict(chunk)
             sum_probs += probs
+            sum_chunk = chunk if sum_chunk is None else sum_chunk + chunk
             collected += 1
 
             if verbose:
@@ -84,12 +95,15 @@ def run_trials(
                 print(f"[Trial {collected:02d} @ {stamp}] pred={label} probs={np.round(probs, 3)}")
 
         avg_probs = (sum_probs / collected) if collected else None
+        avg_chunk = (sum_chunk / collected) if (collected and sum_chunk is not None) else None
         if verbose:
             if avg_probs is not None:
                 print(f"\nAveraged over {collected} trials: {np.round(avg_probs, 3)}")
+                if avg_chunk is not None and verbose:
+                    print(f"Averaged chunk shape: {avg_chunk.shape}")
             else:
                 print("No trials completed; no average available.")
-        return TrialResult(trials=collected, avg_probs=avg_probs)
+        return TrialResult(trials=collected, avg_probs=avg_probs, avg_chunk=avg_chunk)
     finally:
         producer.recording_flag.value = False
         producer.stop()

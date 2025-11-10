@@ -2,8 +2,10 @@
 import time
 import numpy as np
 from multiprocessing import Process, Event, Value, Queue
-from neurokit_connector import NeuroPawnConnector
-
+try:
+    from .neurokit_connector import NeuroPawnConnector
+except ImportError:
+    from neurokit_connector import NeuroPawnConnector
 
 class StreamingProcess(Process):
     def __init__(

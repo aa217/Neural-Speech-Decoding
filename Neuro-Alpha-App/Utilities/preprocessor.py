@@ -1,8 +1,9 @@
 # pre_processor.py
 import numpy as np
-
-from MindsAI.mindsai_filter_python.core import mindsai_python_filter as mai
-
+try:
+    from .MindsAI.mindsai_filter_python.core import mindsai_python_filter as mai
+except ImportError:
+    from MindsAI.mindsai_filter_python.core import mindsai_python_filter as mai
 class PreProcessor:
     """
     Replicate notebook's preprocessing:

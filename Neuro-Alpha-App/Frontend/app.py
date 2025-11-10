@@ -9,6 +9,8 @@ Current behavior:
 
 from __future__ import annotations
 
+import sys
+from pathlib import Path
 import time
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional
@@ -16,6 +18,17 @@ from typing import Dict, List, Optional
 import numpy as np
 import pandas as pd
 import streamlit as st
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+# Attempt to import backend helper
+try:
+    from Utilities.tester import run_trials, TrialResult
+except Exception:
+    run_trials = None
+    TrialResult = None
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -59,13 +72,14 @@ def generate_mock_eeg() -> np.ndarray:
 @dataclass
 class UIState:
     running: bool = False
-    test_mode: bool = True
+    test_mode: bool = False
     word_probs: Dict[str, float] = field(default_factory=lambda: {c: 0.0 for c in CLASSES})
     eeg_data: Optional[np.ndarray] = None
     transcript: str = "Press Start to begin."
     last_update: str = "Never"
     status_msg: str = ""
     focus_label: str = CLASSES[0]
+    device_enabled: bool = run_trials is not None
 
 
 if "ui_state" not in st.session_state:
@@ -101,7 +115,10 @@ st.markdown(
 st.sidebar.header("Input Source")
 STATE.test_mode = st.sidebar.checkbox("Test mode (fake data)", value=STATE.test_mode)
 if not STATE.test_mode:
-    st.sidebar.info("Device mode will be re-enabled soon. Keep Test mode on for now.", icon="ℹ️")
+    if not STATE.device_enabled:
+        st.sidebar.error("Device mode unavailable — Utilities backend missing.", icon="⚠️")
+    else:
+        st.sidebar.info("Device mode enabled — Start will run `run_trials` and display averaged data.", icon="ℹ️")
 current_index = CLASSES.index(STATE.focus_label) if STATE.focus_label in CLASSES else 0
 STATE.focus_label = st.sidebar.selectbox("Top prediction word", CLASSES, index=current_index)
 
@@ -113,6 +130,38 @@ def run_mock_cycle() -> None:
     STATE.transcript = f"Predicted: {top_label}"
     STATE.last_update = time.strftime("%H:%M:%S")
     STATE.status_msg = "Recording complete — snapshot ready."
+
+
+def capture_device_snapshot() -> None:
+    if run_trials is None:
+        STATE.status_msg = "Backend utilities unavailable."
+        return
+    STATE.status_msg = "Recording from device…"
+    try:
+        result = run_trials(verbose=False)
+    except Exception as exc:
+        STATE.status_msg = f"Device recording failed: {exc}"
+        STATE.eeg_data = None
+        STATE.word_probs = {c: 0.0 for c in CLASSES}
+        return
+
+    if result.avg_probs is not None:
+        STATE.word_probs = {label: float(result.avg_probs[idx]) for idx, label in enumerate(CLASSES)}
+        top_idx = int(np.argmax(result.avg_probs))
+        STATE.transcript = f"Detected: {CLASSES[top_idx]}"
+        probs_text = ", ".join(f"{CLASSES[i]}: {result.avg_probs[i]:.2f}" for i in range(len(CLASSES)))
+        STATE.status_msg = f"Device snapshot ready — avg probs [{probs_text}]"
+    else:
+        STATE.word_probs = {c: 0.0 for c in CLASSES}
+        STATE.transcript = "No predictions collected."
+        STATE.status_msg = "Device snapshot ready — no probabilities available."
+
+    if result.avg_chunk is not None:
+        STATE.eeg_data = result.avg_chunk
+    else:
+        STATE.eeg_data = None
+
+    STATE.last_update = time.strftime("%H:%M:%S")
 
 
 # ---------------------------------------------------------------------------
@@ -146,14 +195,26 @@ with left_btn:
             STATE.transcript = "Recording EEG… please hold still."
             STATE.last_update = "Recording…"
         else:
-            STATE.status_msg = "Device mode not available yet. Please enable Test mode."
+            if not STATE.device_enabled:
+                STATE.status_msg = "Backend unavailable. Please install Utilities dependencies or switch to Test mode."
+            else:
+                STATE.running = True
+                STATE.word_probs = {c: 0.0 for c in CLASSES}
+                STATE.eeg_data = None
+                STATE.transcript = "Recording from device…"
+                STATE.last_update = "Recording…"
+                capture_device_snapshot()
+                STATE.running = False
 with right_btn:
     if st.button("Stop", use_container_width=True, disabled=not STATE.running):
         STATE.running = False
         if STATE.test_mode:
             run_mock_cycle()
         else:
-            STATE.status_msg = "Stopped."
+            if not STATE.device_enabled:
+                STATE.status_msg = "Backend unavailable."
+            else:
+                capture_device_snapshot()
 with meta:
     st.markdown(
         f"<div class='card' style='margin-bottom:0;'>"

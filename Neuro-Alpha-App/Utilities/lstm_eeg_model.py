@@ -4,8 +4,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from preprocessor import PreProcessor 
-
+try:
+    from .preprocessor import PreProcessor  # package import
+except ImportError:
+    from preprocessor import PreProcessor   # fallback for direct script runs
 CLASS_NAMES = ["Food", "Water", "BG-Noise"] 
 
 class EEG_LSTM(nn.Module):
