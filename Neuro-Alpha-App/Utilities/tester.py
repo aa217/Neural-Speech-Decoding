@@ -1,12 +1,16 @@
 from multiprocessing import Queue, freeze_support
 from streaming_process import StreamingProcess
 import time
+import numpy as np
+from lstm_eeg_model import SimplePredictor
 
 def main():
     q = Queue(maxsize=8)
     producer = StreamingProcess(serial_port="COM16", num_channels=8, window_seconds=5.0, out_queue=q)
     producer.start()
-    producer.recording_flag.value = True  # enable before waiting
+    producer.recording_flag.value = True
+
+    predictor = None
 
     try:
         while True:
@@ -15,11 +19,34 @@ def main():
 
             try:
                 item = q.get(timeout=6.5)
-                chunk = item["data"]
-                print("Got chunk:", chunk.shape, "sr:", item["sr"], "chs:", len(item["channels"]))
             except Exception:
                 print("Waiting for chunk...", flush=True)
                 time.sleep(0.5)
+                continue
+
+            chunk = item["data"]
+            print(chunk)
+            sr = item["sr"]
+            channels = item.get("channels")
+
+            if predictor is None:
+                predictor = SimplePredictor(
+                    pth_path="C:/Users/15878/Desktop/NAT-Hacks/Neural-Speech-Decoding/Neuro-Alpha-App/Utilities/LSTM_Model/lstm_classifier_Water_Food_Bg_Noise.pth",
+                    sr=sr,
+                    channel_order=channels,
+                    input_size=8,
+                    hidden_size=48,
+                    num_layers=2,
+                    num_classes=3,
+                    dropout=0.60,
+                    device="cpu",
+                    tailoring_lambda=1.25e-29,
+                    class_names=["Food", "Water", "None"],
+                )
+
+
+            probs, label = predictor.predict(chunk)
+            print(f"[{time.strftime('%H:%M:%S')}] pred={label} probs={np.round(probs, 3)}")
     except KeyboardInterrupt:
         pass
     finally:

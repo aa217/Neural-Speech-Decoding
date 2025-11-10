@@ -28,11 +28,9 @@ class NeuroPawnConnector:
         Ignore any response content.
         """
         try:
-            # Ensure ASCII-only payload
             payload = cmd.encode('ascii', errors='strict')
             self.board_shim.config_board_with_bytes(payload)
         except Exception:
-            # As an alternative, try string API but swallow decode issues
             try:
                 _ = self.board_shim.config_board(cmd)
             except Exception:
