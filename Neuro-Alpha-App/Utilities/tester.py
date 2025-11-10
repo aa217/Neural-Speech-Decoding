@@ -6,7 +6,7 @@ from lstm_eeg_model import SimplePredictor
 
 def main():
     q = Queue(maxsize=8)
-    producer = StreamingProcess(serial_port="", num_channels=8, window_seconds=5.0, out_queue=q)
+    producer = StreamingProcess(serial_port="/dev/cu.usbserial-FTB6SPL3", num_channels=8, window_seconds=5.0, out_queue=q)
     producer.start()
     producer.recording_flag.value = True
 
@@ -21,7 +21,6 @@ def main():
                 item = q.get(timeout=6.5)
             except Exception:
                 print("Waiting for chunk...", flush=True)
-                time.sleep(0.5)
                 continue
 
             chunk = item["data"]
@@ -31,7 +30,7 @@ def main():
 
             if predictor is None:
                 predictor = SimplePredictor(
-                    pth_path="C:/Users/15878/Desktop/NAT-Hacks/Neural-Speech-Decoding/Neuro-Alpha-App/Utilities/LSTM_Model/lstm_classifier_Water_Food_Bg_Noise.pth",
+                    pth_path="Neuro-Alpha-App/Utilities/LSTM_Model/lstm_classifier_Water_Food_Bg_Noise.pth",
                     sr=sr,
                     channel_order=channels,
                     input_size=8,
