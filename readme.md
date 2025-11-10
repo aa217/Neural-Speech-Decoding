@@ -90,3 +90,6 @@ Questions? Ping the team or open an issue. Let's keep giving people their voices
 
 ## Presentation
 https://docs.google.com/presentation/d/1PmumbUgBneHLZSiKB_XiU8ok0VtoRsKsS3Wz_qaZzoA/edit?slide=id.p#slide=id.p
+
+## Project Summary
+https://docs.google.com/document/d/1_ACWMtbFm5IJjDofB0Gqph0Lh1LyhFOokEt7aoQumYE/edit?tab=t.0
