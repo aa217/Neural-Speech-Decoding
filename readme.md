@@ -87,3 +87,6 @@ Limited datasets: While a few small imagined-speech EEG datasets exist, most are
 - Device demo: uncheck Test mode, set your Neuropawn serial port, press **Start**, and let the recorder average 10 trials to display a real EEG snapshot and predicted word.
 
 Questions? Ping the team or open an issue. Let's keep giving people their voices back.
+
+## Presentation
+https://docs.google.com/presentation/d/1PmumbUgBneHLZSiKB_XiU8ok0VtoRsKsS3Wz_qaZzoA/edit?slide=id.p#slide=id.p
