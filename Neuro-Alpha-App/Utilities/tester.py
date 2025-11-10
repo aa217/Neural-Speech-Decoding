@@ -6,7 +6,7 @@ from lstm_eeg_model import SimplePredictor
 
 def main():
     q = Queue(maxsize=8)
-    producer = StreamingProcess(serial_port="COM16", num_channels=8, window_seconds=5.0, out_queue=q)
+    producer = StreamingProcess(serial_port="", num_channels=8, window_seconds=5.0, out_queue=q)
     producer.start()
     producer.recording_flag.value = True
 
@@ -47,6 +47,7 @@ def main():
 
             probs, label = predictor.predict(chunk)
             print(f"[{time.strftime('%H:%M:%S')}] pred={label} probs={np.round(probs, 3)}")
+            break
     except KeyboardInterrupt:
         pass
     finally:
