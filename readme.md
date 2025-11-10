@@ -1,6 +1,6 @@
 # NeuroAlpha — Imagined Speech Decoder
 
-> v2 branch — contains the live demo showcased at demo day. Device mode is wired through `Utilities/`, while the Streamlit frontend lives in `Neuro-Alpha-App/Frontend`.
+> v2 branch — contains the live demo showcased at HackMIT / demo day. Device mode is wired through `Utilities/`, while the Streamlit frontend lives in `Neuro-Alpha-App/Frontend`.
 
 ## Getting Started
 
@@ -50,7 +50,7 @@ NeuroAlpha is a working prototype designed to decode imagined speech, the words 
 
 ## How we built it
 
-Limited datasets: While a few small imagined-speech EEG datasets exist, most are research-grade and collected using wet-electrode or high-density systems. Their formats and electrode placements weren’t compatible with our affordable Neuropawn hardware, so we had to design and record our own dataset from scratch. We ran dozens of sessions where participants wore dry spike electrodes on the frontal lobe and imagined four key words—Yes, No, Water, and Food—plus background-noise segments, sampling at 125 Hz. We then trained an LSTM with residual blocks to learn temporal EEG patterns; after tuning dropout and loss weighting, we hit roughly 70 % accuracy. The last piece was a Streamlit interface that pairs the decoder with live visualization so you can see brain activity and predictions in real time.
+Limited datasets: While a few small imagined-speech EEG datasets exist, most are research-grade and collected using wet-electrode or high-density systems. Their formats and electrode placements weren’t compatible with our affordable Neuropawn hardware, so we had to design and record our own dataset from scratch. We ran dozens of sessions where participants wore dry spike electrodes on the frontal lobe and imagined four key words—Yes, No, Water, and Food—plus background-noise segments, sampling at 125 Hz. During training we found the model confused Yes vs. No (likely due to overlapping cortical activation), so the production demo focuses on three classes: Food, Water, and Background Noise. With that simplification and an LSTM + residual stack, we hit roughly 70 % accuracy. The last piece was a Streamlit interface that pairs the decoder with live visualization so you can see brain activity and predictions in real time.
 
 ## Challenges we ran into
 
@@ -62,13 +62,13 @@ Limited datasets: While a few small imagined-speech EEG datasets exist, most are
 ## Accomplishments we’re proud of
 
 - Built the first working imagined-speech-to-text model with affordable hardware.  
-- Achieved ~70 % accuracy distinguishing between three classes.  
+- Achieved ~70 % accuracy distinguishing between three classes (Food, Water, Background Noise).  
 - Took the first step toward giving people with speech impairments a non-invasive way to communicate.
 
 ## What we learned
 
 - EEG data is highly individual, meaning large-scale data will be key for a generalized decoder.  
-- Words that activate the same parts of the brain would be hard to classify. The frontal lobe placement was effective but adding more electrodes could improve this problem.  
+- Words that activate the same parts of the brain (e.g., Yes vs. No) are hard to classify; the frontal placement was effective, but more electrodes or smarter encoders could let us reintroduce those words later.  
 - And most importantly, we learned that it is possible to read imagined speech. This isn’t science fiction anymore!
 
 ## Next steps
