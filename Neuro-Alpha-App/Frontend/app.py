@@ -157,12 +157,17 @@ def capture_device_snapshot() -> None:
         STATE.status_msg = "Device snapshot ready — no probabilities available."
 
     if result.avg_chunk is not None:
-        STATE.eeg_data = result.avg_chunk
+        STATE.eeg_data = normalize_eeg(result.avg_chunk)
     else:
         STATE.eeg_data = None
 
     STATE.last_update = time.strftime("%H:%M:%S")
 
+def normalize_eeg(chunk: np.ndarray) -> np.ndarray:
+    # avoid divide-by-zero by adding a tiny epsilon
+    mu = chunk.mean(axis=0, keepdims=True)
+    sigma = chunk.std(axis=0, keepdims=True) + 1e-6
+    return (chunk - mu) / sigma
 
 # ---------------------------------------------------------------------------
 # Header + controls
