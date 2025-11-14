@@ -4,11 +4,10 @@
 
 ## Getting Started
 
-1. **Clone & checkout the demo branch**
+1. **Clone**
    ```bash
    git clone https://github.com/<org-or-user>/Neural-Speech-Decoding.git
    cd Neural-Speech-Decoding
-   git switch v2
    ```
 
 2. **Create / activate the environment (conda or venv)**
